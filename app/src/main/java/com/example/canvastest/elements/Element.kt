@@ -5,6 +5,13 @@ import android.graphics.drawable.shapes.Shape
 import kotlin.math.pow
 
 open class Element(private var sp: Point,private var ep: Point) : Shape() {
+
+    companion object{
+       var elements = mutableListOf<Element>()
+    }
+    init {
+        elements.add(this)
+    }
     private val HEIGHT = 70.0
     private val MIN_WIDTH = 150.0
     var startJoint : Joint? = null

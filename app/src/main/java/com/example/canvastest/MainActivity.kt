@@ -8,11 +8,13 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.view.MenuItem
+import com.example.canvastest.Model.Node2
 import com.example.canvastest.model.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.circuit_view.*
 import kotlinx.android.synthetic.main.main_content.*
+
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -67,7 +69,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_tension -> {
                 circuitView.addElement(TensionSource(Point(100, 100), Point(300, 100)))
-                findSynapses()
+
+            }
+            R.id.nav_play->{
+                Node2.createMatrix()
+                mNode.groundedNode = mNode.nodeList[0]
+                mNode.updatePotential()
             }
         }
         circuitView.invalidate()

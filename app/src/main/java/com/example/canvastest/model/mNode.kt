@@ -90,9 +90,12 @@ class mNode {
             }
 
             var result = mSolver.lsolve(matrix,equal)
-            nodeList.forEachIndexed{i,it ->
-                if (groundedNode != it)
-                it.potential = result[i]
+            var i =0
+            nodeList.forEach{it ->
+                if (groundedNode != it) {
+                    it.potential = result[i]
+                    i++
+                }
             }
             groundedNode?.potential = 0.0
         }
