@@ -7,15 +7,15 @@
         <item
                 android:id="@+id/nav_play"
                 android:icon="@android:drawable/ic_media_play"
-                android:title="Rezystor"/>
+                android:title="Start"/>
 
 
     </group>
     <group android:checkableBehavior="none">
         <item
-                android:id="@+id/nav_resistor"
+                android:id="@+id/nav_ssave"
                 android:icon="@drawable/ic_action_resistor"
-                android:title="Rezystor"/>
+                android:title="Zapisz"/>
         <item
                 android:id="@+id/nav_tension"
                 android:icon="@drawable/ic_action_tension"

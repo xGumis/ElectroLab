@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:orientation="vertical">
+
+        <TextView
+                android:text="Zapisywanie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView_title" android:textSize="24sp"
+                android:gravity="center"/>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" app:cardElevation="5dp" android:id="@+id/cardView"
+                android:layout_marginTop="8dp">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:text="Wpisz nazwę"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView" android:textSize="20sp"/>
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:ems="10"
+                        android:id="@+id/editText_name" android:textSize="24sp" android:hint="Nazwa"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:gravity="clip_horizontal">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_weight="1">
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_weight="1" android:gravity="right">
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
