@@ -27,15 +27,24 @@ import kotlin.collections.ArrayList
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import com.example.canvastest.utilites.InjectorUtils
 import com.example.canvastest.view_models.MainActivityViewModel
 import com.google.android.material.button.MaterialButton
+import android.widget.ArrayAdapter
+import androidx.lifecycle.observe
+import com.example.canvastest.database.Schema
+import org.jetbrains.anko.UI
+import org.jetbrains.anko.doAsync
+
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnDragListener {
+
+    private var schema:Schema? = null
 
     private val viewModel:MainActivityViewModel by viewModels {
         InjectorUtils.provideMainActivityViewModelFactory(this)
@@ -101,18 +110,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_play -> {
-                onSave()
-                //circuitView.addElement(Resistor(Point(100, 100), Point(300, 100)))
-            }
-            R.id.nav_flow -> {
-                circuitView.addElement(FlowSource(Point(100, 100), Point(300, 100)))
-            }
-            R.id.nav_tension -> {
-                circuitView.addElement(TensionSource(Point(100, 100), Point(300, 100)))
-
-            }
-            R.id.nav_play->{
                 calculate()
+            }
+            R.id.nav_load -> {
+                onLoad()
+            }
+            R.id.nav_save -> {
+                onSave()
+            }
+            R.id.nav_clear->{
+                onClear()
+            }
+            R.id.nav_saveAs->{
+                onSaveAs()
             }
         }
         circuitView.invalidate()
@@ -196,7 +206,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return Point(event.x.toInt() - view.width/2,event.y.toInt()-view.height/2)
     }
 
+    private fun onClear()
+    {
+        viewModel.usingSchema = null
+        circuitView.clearCanvas()
+    }
     private fun onSave()
+    {
+        if(viewModel.usingSchema != null)
+            viewModel.save(circuitView.elements.toTypedArray())
+        else onSaveAs()
+
+    }
+
+    private fun onSaveAs()
     {
         val builder = AlertDialog.Builder(this@MainActivity)
         val inflater = this.layoutInflater
@@ -204,7 +227,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         builder.setView(v)
         builder.setPositiveButton("Zapisz",
             DialogInterface.OnClickListener { dialog, id ->
-               Log.d("alert","zapis")
+               Log.d("alert","zapis ${v.findViewById<EditText>(R.id.editText_name).text}")
                 viewModel.save(v.findViewById<EditText>(R.id.editText_name).text.toString(),circuitView.elements.toTypedArray())
             })
         builder.setNegativeButton("Anuluj",
@@ -213,6 +236,46 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             })
         val dialog = builder.create()
 
+        dialog.show()
+
+    }
+
+    private fun onLoad()
+    {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        val inflater = this.layoutInflater
+        val v = inflater.inflate(R.layout.dialog_load_lab, null)  // this line
+        builder.setView(v)
+        val spinner = v.findViewById<Spinner>(R.id.spinner_schema)
+
+        viewModel.schemas.observe(this) { schemas ->
+            if (schemas != null) {
+                schemas.forEach {
+                    Log.d("schemat:", it.name)
+                }
+                val spinnerArrayAdapter = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    Array(schemas.size,{i-> schemas[i].name})
+                )
+                spinner.adapter = spinnerArrayAdapter
+            }
+
+        }
+
+        val dialog = builder.create()
+        v.findViewById<Button>(R.id.button_cancel).setOnClickListener {
+            dialog.dismiss()
+        }
+        v.findViewById<Button>(R.id.button_load).setOnClickListener {
+            doAsync {
+                viewModel.usingSchema = viewModel.schemas.value!![spinner.selectedItemPosition]
+                circuitView.load(viewModel.load(viewModel.usingSchema!!))
+            }
+            UI {
+                dialog.dismiss()
+            }
+        }
         dialog.show()
 
     }

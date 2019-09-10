@@ -10,11 +10,12 @@ class PointConverter {
     @TypeConverter
     fun pointToIntArray(point:Point?):String
     {
-        return ""
+        return "${point!!.x},${point.y}"
     }
     @TypeConverter
     fun intArrayToPoiint(str:String):Point?
     {
-        return Point(0,0)
+        val arr = str.split(',')
+        return (Point(arr[0].toInt(),arr[1].toInt()))
     }
 }

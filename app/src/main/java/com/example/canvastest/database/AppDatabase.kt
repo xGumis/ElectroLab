@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-const val DATABASE_NAME = "electro"
+const val DATABASE_NAME = "electro_lab1"
 @TypeConverters(PointConverter::class)
 @Database(entities = [ResistorEntity::class,FlowEntity::class,TensionEntity::class,Schema::class],version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){

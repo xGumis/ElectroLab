@@ -1,6 +1,7 @@
 package com.example.canvastest.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -11,4 +12,7 @@ interface TensionDao {
 
     @Insert
     fun insert(entity:TensionEntity)
+
+    @Delete
+    fun delete(toDelete:List<TensionEntity>)
 }

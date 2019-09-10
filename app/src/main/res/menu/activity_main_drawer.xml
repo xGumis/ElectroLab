@@ -13,17 +13,22 @@
     </group>
     <group android:checkableBehavior="none">
         <item
-                android:id="@+id/nav_ssave"
+                android:id="@+id/nav_save"
                 android:icon="@drawable/ic_action_resistor"
                 android:title="Zapisz"/>
         <item
-                android:id="@+id/nav_tension"
-                android:icon="@drawable/ic_action_tension"
-                android:title="Źródło napięcia"/>
-        <item
-                android:id="@+id/nav_flow"
+                android:id="@+id/nav_saveAs"
                 android:icon="@drawable/ic_action_flow"
-                android:title="Żródło natężenia"/>
+                android:title="Zapisz jako..."/>
+        <item
+                android:id="@+id/nav_load"
+                android:icon="@drawable/ic_action_tension"
+                android:title="Wczytaj"/>
+        <item
+                android:id="@+id/nav_clear"
+                android:icon="@drawable/ic_action_flow"
+                android:title="Czyść"/>
+
 
     </group>
 

@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 class Schema (
     var name:String,
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id")
-    var id :Int? = null)
+    var id :Long? = null)
 {}

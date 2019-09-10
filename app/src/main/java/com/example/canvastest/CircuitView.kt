@@ -414,4 +414,11 @@ class CircuitView(context: Context, attrs: AttributeSet) : View(context, attrs) 
                 tNodes.add(i)
             }
     }
+
+    fun load(elementsArray: Array<Element>)
+    {
+        elements = elementsArray.toMutableList()
+        actionUp()
+        invalidate()
+    }
 }
