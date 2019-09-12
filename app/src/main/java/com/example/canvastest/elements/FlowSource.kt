@@ -22,5 +22,13 @@ class FlowSource(startPoint: Point, endPoint:Point, var flowValue : Double = 5.0
         val ss = (15.0/l)
         canvas?.drawLine((centerX-(x*ss)).toFloat(),(centerY-(ss)).toFloat(),(centerX+(vsc.x*s)).toFloat(),(centerY+(vsc.y*s)).toFloat(),paint)
         canvas?.drawLine((centerX+(x*ss)).toFloat(),(centerY+(ss)).toFloat(),(centerX+(vsc.x*s)).toFloat(),(centerY+(vsc.y*s)).toFloat(),paint)
+
+        if(shouldDraw)
+        {
+            val x = 15
+            val y = 15
+            val center = Point((startPoint.x + endPoint.x)/2, (startPoint.y + endPoint.y)/2)
+            canvas?.drawText(flowValue.toString()+"A",x+center.x.toFloat(), y+center.y.toFloat(),dataPaint)
+        }
     }
 }

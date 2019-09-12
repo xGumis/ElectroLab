@@ -90,6 +90,7 @@ class CircuitView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
     private fun actionMove(x: Float, y: Float) {
         catchedElement?.let { ce ->
+            Element.shouldDraw = false
             if (isEdgeCatched) {
                 if (isStartCatched)
                     ce.startPoint = Point(x.toInt(), y.toInt())

@@ -20,5 +20,13 @@ class TensionSource(startPoint : Point, endPoint : Point, var tensionValue : Dou
         canvas?.drawLine((startPoint.x+(vsc.x*s)-(x*ss)).toFloat(),(startPoint.y+(vsc.y*s)-(ss)).toFloat(),(startPoint.x+(vsc.x*s)+(x*ss)).toFloat(),(startPoint.y+(vsc.y*s)+(ss)).toFloat(),paint)
         ss = 30f/l
         canvas?.drawLine((endPoint.x+(-vsc.x*s)-(x*ss)).toFloat(),(endPoint.y+(-vsc.y*s)-(ss)).toFloat(),(endPoint.x+(-vsc.x*s)+(x*ss)).toFloat(),(endPoint.y+(-vsc.y*s)+(ss)).toFloat(),paint)
+        if(shouldDraw)
+        {
+            val x = 15
+            val y = 15
+            val center = Point((startPoint.x + endPoint.x)/2, (startPoint.y + endPoint.y)/2)
+            canvas?.drawText(tensionValue.toString()+"V",x+center.x.toFloat(), y+center.y.toFloat(),dataPaint)
+        }
+
     }
 }

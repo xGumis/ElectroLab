@@ -8,6 +8,18 @@ open class Element(private var sp: Point,private var ep: Point) : Shape() {
 
     companion object{
        var elements = mutableListOf<Element>()
+        var shouldDraw = false
+
+        val dataPaint = Paint().also {
+            it.color = Color.RED
+            it.strokeWidth = 7f
+            it.strokeJoin = Paint.Join.ROUND
+            it.strokeCap = Paint.Cap.ROUND
+            it.style = Paint.Style.STROKE
+            it.isAntiAlias = true
+            it.textSize = 50F
+
+        }
     }
     init {
         elements.add(this)

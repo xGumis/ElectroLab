@@ -14,19 +14,19 @@
     <group android:checkableBehavior="none">
         <item
                 android:id="@+id/nav_save"
-                android:icon="@drawable/ic_action_resistor"
+                android:icon="@drawable/ic_save_cloud"
                 android:title="Zapisz"/>
         <item
                 android:id="@+id/nav_saveAs"
-                android:icon="@drawable/ic_action_flow"
+                android:icon="@drawable/ic_save_cloud"
                 android:title="Zapisz jako..."/>
         <item
                 android:id="@+id/nav_load"
-                android:icon="@drawable/ic_action_tension"
+                android:icon="@drawable/ic_load_loud"
                 android:title="Wczytaj"/>
         <item
                 android:id="@+id/nav_clear"
-                android:icon="@drawable/ic_action_flow"
+                android:icon="@drawable/ic_clear"
                 android:title="Czyść"/>
 
 

@@ -22,5 +22,14 @@ class Resistor(startPoint: Point, endPoint: Point,var resistance : Double = 1.0)
         val s = 1.0 - (X/Math.sqrt(vsc.x.toDouble().pow(2)+vsc.y.toDouble().pow(2)))
         canvas?.drawLine(startPoint.x.toFloat(),startPoint.y.toFloat(),(startPoint.x+(vsc.x*s)).toFloat(),(startPoint.y+(vsc.y*s)).toFloat(),paint)
         canvas?.drawLine(endPoint.x.toFloat(),endPoint.y.toFloat(),(endPoint.x+(-vsc.x*s)).toFloat(),(endPoint.y+(-vsc.y*s)).toFloat(),paint)
+
+        if(shouldDraw)
+        {
+            val x = 15
+            val y = 15
+            val center = Point((startPoint.x + endPoint.x)/2, (startPoint.y + endPoint.y)/2)
+            canvas?.drawText(resistance.toString()+'\u03A9',x+center.x.toFloat(), y+center.y.toFloat(),dataPaint)
+        }
+
     }
 }

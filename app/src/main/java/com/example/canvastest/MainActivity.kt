@@ -134,6 +134,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun calculate()
     {
         try {
+            Element.shouldDraw = true
             mNode.nodeList = mutableListOf()
             findSynapses()
             circuitView.findSynapses()
