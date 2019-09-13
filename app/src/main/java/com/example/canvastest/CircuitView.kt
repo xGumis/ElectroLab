@@ -261,6 +261,7 @@ class CircuitView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             else
                 it.elementsJoined.first().first.endJoint = null
             joints.remove(it)
+            Joint.joints.remove(it)
         }
     }
 

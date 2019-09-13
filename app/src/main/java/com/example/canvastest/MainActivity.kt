@@ -9,12 +9,11 @@ import android.os.Bundle
 import com.example.canvastest.elements.*
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import android.util.Log
 import android.view.DragEvent
 import android.view.MenuItem
 import android.view.View
-import com.example.canvastest.Model.Node2
+import com.example.canvastest.model.Node2
 import com.example.canvastest.model.*
 import com.example.canvastest.views.UpMenuItem
 
@@ -23,17 +22,12 @@ import kotlinx.android.synthetic.main.circuit_view.*
 import kotlinx.android.synthetic.main.main_content.*
 import java.lang.Exception
 import kotlin.collections.ArrayList
-//import android.R
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProviders
 import com.example.canvastest.utilites.InjectorUtils
 import com.example.canvastest.view_models.MainActivityViewModel
-import com.google.android.material.button.MaterialButton
 import android.widget.ArrayAdapter
 import androidx.lifecycle.observe
 import com.example.canvastest.database.Schema
@@ -136,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         try {
             Element.shouldDraw = true
             mNode.nodeList = mutableListOf()
-            findSynapses()
+            //findSynapses()
             circuitView.findSynapses()
             Node2.createMatrix()
             mNode.groundedNode = mNode.nodeList[0]
@@ -281,7 +275,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private fun findSynapses() {
+   /* private fun findSynapses() {
         synapses.clear()
         nodeMap.clear()
         findNodes()
@@ -347,5 +341,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             if (circuitView.joints[i].elementsJoined.count() >= 2) {
                 nodeMap[i] = mNode()
             }
-    }
+    }*/
 }

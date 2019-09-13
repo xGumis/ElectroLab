@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
 import android.graphics.drawable.shapes.Shape
-import com.example.canvastest.Model.Node2
+import com.example.canvastest.model.Node2
 
 class Joint:Shape() {
 
